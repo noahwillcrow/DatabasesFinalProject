@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DataConnection-Web.config Connection String" description="DataConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:s10.winhost.com;Initial Catalog=DB_75322_santa;User ID=DB_75322_santa_user;Password=santababy;Integrated Security=False;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\NoahWC\\Documents\\GitHub\\School\\DatabasesFinalProject\\Website\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DataConnection']/@connectionString" />
+  </parameter>
+</parameters>
