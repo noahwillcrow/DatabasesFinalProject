@@ -40,3 +40,11 @@ C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\obj\Debug\
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\obj\Debug\Website.csproj.CoreCompileInputs.cache
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\obj\Debug\Website.dll
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\obj\Debug\Website.pdb
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\EntityFramework.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\EntityFramework.SqlServer.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\NwcLib.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.pdb
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.dll.config
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\EntityFramework.xml
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\EntityFramework.SqlServer.xml

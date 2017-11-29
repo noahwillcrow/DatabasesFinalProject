@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "Website\Website.csproj", "{CC9D2882-B335-43A5-8299-B23651A36532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseBridge", "..\DatabaseBridge\DatabaseBridge.csproj", "{CEB69422-A3E9-43DC-B467-7BBC36F497CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseBridge", "DatabaseBridge\DatabaseBridge.csproj", "{CEB69422-A3E9-43DC-B467-7BBC36F497CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
