@@ -26,5 +26,35 @@ namespace Website.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// This page should allow the user to edit an elf's records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Update(int kidId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update(int kidId, bool tempParameterPleaseRemoveThis) //Needs a request view model
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// This page should allow the user to create a new elf in the records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(bool tempParameterPleaseRemoveThis) //Needs a request view model
+        {
+            return View();
+        }
     }
 }

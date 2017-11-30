@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Website.Controllers
 {
@@ -23,6 +19,36 @@ namespace Website.Controllers
         /// <param name="reindeerId"></param>
         /// <returns></returns>
         public ActionResult Details(int reindeerId)
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// This page should allow the user to edit a reindeer's records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Update(int kidId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Update(int kidId, bool tempParameterPleaseRemoveThis) //Needs a request view model
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// This page should allow the user to create a new reindeer in the records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(bool tempParameterPleaseRemoveThis) //Needs a request view model
         {
             return View();
         }
