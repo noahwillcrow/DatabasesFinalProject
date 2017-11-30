@@ -1,6 +1,6 @@
 create procedure dbo.GetWorkReadyReindeer
 as
-	select Reindeer.ReindeerID
+	select *
 	from Reindeer
 	where Reindeer.Status = 'Healthy'
 return

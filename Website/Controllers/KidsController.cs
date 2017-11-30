@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DatabaseBridge.Managers;
+using DatabaseBridge.Models;
 using System.Web.Mvc;
+using Website.Models.Request;
+using Website.Models.Response;
 
 namespace Website.Controllers
 {
@@ -14,7 +14,8 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Index(int page = 1)
         {
-            return View();
+            var kids = KidsManager.GetPage(pagesize: 10, pagenumber: page);
+            return View(kids);
         }
 
         /// <summary>
@@ -25,7 +26,61 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Details(int kidId)
         {
-            return View();
+            var kid = KidsManager.GetByID(kidId);
+            var isNice = KidsManager.IsKidNice(kidId);
+            var deeds = KidsManager.GetDeeds(kidId);
+            var presents = KidsManager.GetPresents(kidId);
+
+            var viewModel = new KidDetailsViewModel(kid, isNice, deeds, presents);
+            return View(viewModel);
+        }
+
+        /// <summary>
+        /// This page should allow the user to edit a kid's records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Update(int kidId)
+        {
+            var kid = KidsManager.GetByID(kidId);
+            var viewModel = new KidUpdateResponseViewModel(kid);
+            return View("~/Views/Kids/AddOrUpdate.cshtml", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Update(int kidId, KidUpdateRequestViewModel requestModel)
+        {
+            var kid = KidsManager.GetByID(kidId);
+            requestModel.UpdateKidModel(kid);
+
+            bool success = KidsManager.Save(kid);
+
+            var viewModel = new KidUpdateResponseViewModel(kid);
+            viewModel.UpdateSuccess = success;
+
+            return View("~/Views/Kids/AddOrUpdate.cshtml", viewModel);
+        }
+
+        /// <summary>
+        /// This page should allow the user to create a new kid in the records.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Create()
+        {
+            return View("~/Views/Kids/AddOrUpdate.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult Create(KidUpdateRequestViewModel requestModel)
+        {
+            var kid = new Kid();
+            requestModel.UpdateKidModel(kid);
+
+            bool success = KidsManager.Save(kid);
+
+            var viewModel = new KidUpdateResponseViewModel(kid);
+            viewModel.UpdateSuccess = success;
+
+            return RedirectToAction("Details", new { kidId = kid.ID });
         }
 
         /// <summary>
@@ -35,7 +90,8 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult List(bool nice, int page = 1)
         {
-            return View();
+            var kids = KidsManager.GetPaginatedList(nice, pagesize: 10, pagenumber: page);
+            return View(kids);
         }
 
         /// <summary>
@@ -44,7 +100,8 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult GoodHouses(int page = 1)
         {
-            return View();
+            var goodHouses = HousesManager.GetHousesWithOnlyNiceKids(pagesize: 10, pagenumber: page);
+            return View(goodHouses);
         }
     }
 }

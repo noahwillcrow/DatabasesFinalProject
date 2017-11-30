@@ -1,6 +1,6 @@
-create procedure dbo.GetHousesWithNiceKids
+create view dbo.HousesWithOnlyNiceKids
 as
-	select Houses.HouseID
+	select *
 	from Houses
 	where (
 		select count(KidID)
@@ -9,4 +9,3 @@ as
 			dbo.CalculateNiceness(Kids.KidID) <= 0 or dbo.CalculateNumberOfPresentsForKid(Kids.KidID) = 0
 		)
 	) = 0
-return

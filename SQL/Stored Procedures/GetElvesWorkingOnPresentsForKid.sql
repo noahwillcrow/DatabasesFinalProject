@@ -3,7 +3,7 @@ create procedure dbo.GetElvesWorkingOnPresentsForKid
 	@kidID int
 )
 as
-	select Elves.ElfID
+	select *
 	from Elves
 	where exists (
 		select Presents.KidID, Presents.ItemID

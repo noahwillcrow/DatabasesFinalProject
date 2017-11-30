@@ -1,7 +1,7 @@
 create function [dbo].[CalculateEarningsRatio] (
 	@elfID int
 )
-returns int as
+returns float as
 begin
 	declare @salary int
 	set @salary = (select Salary from Elves where ElfID = @elfID)
@@ -9,5 +9,5 @@ begin
 	declare @presentsMade int
 	set @presentsMade = dbo.CalculateNumberOfPresentsByElf(@elfID, 1)
 
-	return @salary / @presentsMade
+	return cast(@salary as float) / cast(@presentsMade as float)
 end
