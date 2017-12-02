@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DatabaseBridge.Managers;
+using DatabaseBridge.Models;
 using System.Web.Mvc;
+using Website.Models.Request;
+using Website.Models.Response;
 
 namespace Website.Controllers
 {
@@ -12,9 +12,10 @@ namespace Website.Controllers
         /// This page should simply load a paginated list of all elves
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(int page = 1)
+        public ActionResult Index()
         {
-            return View();
+            var elves = ElvesManager.GetPaginatedList();
+            return View(elves);
         }
 
         /// <summary>
@@ -22,24 +23,40 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="elfId"></param>
         /// <returns></returns>
-        public ActionResult Details(int elfId)
+        public ActionResult Details(int elfID)
         {
-            return View();
+            var elf = ElvesManager.GetByID(elfID);
+            var reindeer = ElvesManager.GetPresents(elfID);
+            var presents = ElvesManager.GetReindeer(elfID);
+
+            var viewModel = new ElfDetailsViewModel(elf, presents, reindeer);
+            return View(viewModel);
         }
 
         /// <summary>
         /// This page should allow the user to edit an elf's records.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Update(int kidId)
+        public ActionResult Update(int elfID)
         {
-            return View();
+            var elf = ElvesManager.GetByID(elfID);
+            var viewModel = new ElfUpdateResponseViewModel(elf);
+            return View("~/Views/Elves/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int kidId, bool tempParameterPleaseRemoveThis) //Needs a request view model
+        public ActionResult Update(int elfID, ElfUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            return View();
+            var elf = ElvesManager.GetByID(elfID);
+            requestModel.UpdateElfModel(elf);
+
+            bool success = ElvesManager.Save(elf);
+
+            var viewModel = new KidUpdateResponseViewModel(elf);
+            viewModel.UpdateSuccess = success;
+
+
+            return View("~/Views/Elves/AddOrUpdate.cshtml", viewModel);
         }
 
         /// <summary>
@@ -48,13 +65,21 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            return View();
+            return View("~/Views/Elves/AddOrUpdate.cshtml");
         }
 
         [HttpPost]
-        public ActionResult Create(bool tempParameterPleaseRemoveThis) //Needs a request view model
+        public ActionResult Create(ElfUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            return View();
+            var elf = new Elf();
+            requestModel.UpdateElfModel(elf);
+
+            bool success = ElvesManager.Save(elf);
+
+            var viewModel = new ElfUpdateResponseViewModel(elf);
+            viewModel.updateSuccess = success;
+
+            return RedirectToAction("Details", new { elfId = elf.ID });
         }
     }
 }

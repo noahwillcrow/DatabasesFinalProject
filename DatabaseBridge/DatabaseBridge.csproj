@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="Managers\ElvesManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\HousesManager.cs" />
     <Compile Include="Managers\KidsManager.cs" />
