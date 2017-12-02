@@ -152,12 +152,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
+    <Compile Include="Controllers\DeedsController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
-=======
     <Compile Include="Controllers\PresentsController.cs" />
     <Compile Include="Controllers\HousesController.cs" />
->>>>>>> 214bde33e5b92ed0b5a7f8279c85dd479fc79f8e
     <Compile Include="Controllers\ReindeerController.cs" />
     <Compile Include="Controllers\ElvesController.cs" />
     <Compile Include="Controllers\KidsController.cs" />
@@ -166,10 +164,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentViewModel.cs" />
+    <Compile Include="Models\Request\DeedUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ItemUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ReindeerUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Response\DeedUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\DeedDetailsViewModel.cs" />
     <Compile Include="Models\Response\ItemUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ItemDetailsViewModel.cs" />
     <Compile Include="Models\Response\ReindeerUpdateResponseViewModel.cs" />
