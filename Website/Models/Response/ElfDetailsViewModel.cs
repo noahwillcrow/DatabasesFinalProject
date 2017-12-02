@@ -19,7 +19,7 @@ namespace Website.Models.Response
 
         public IEnumerable<Reindeer> Reindeer { get; set; }
 
-        public IEnumerable<PresentViewModel> Presents { get; set; }
+        public IEnumerable<PresentDetailsViewModel> Presents { get; set; }
 
         public ElfDetailsViewModel(Elf elf, double ratio, IEnumerable<Reindeer> reindeer, IEnumerable<Present> presents)
         {
@@ -32,10 +32,10 @@ namespace Website.Models.Response
 
             this.Ratio = ratio;
 
-            var presentViewModels = new List<PresentViewModel>();
+            var presentViewModels = new List<PresentDetailsViewModel>();
             foreach (var present in presents)
             {
-                presentViewModels.Add(new PresentViewModel(present));
+                presentViewModels.Add(new PresentDetailsViewModel(present));
             }
             this.Presents = presentViewModels;
         }

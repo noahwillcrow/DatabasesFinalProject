@@ -1,5 +1,5 @@
-﻿using DatabaseBridge.Models;
-using System.Collections.Generic;
+﻿using DatabaseBridge.Managers;
+using DatabaseBridge.Models;
 
 namespace Website.Models.Response
 {
@@ -11,6 +11,8 @@ namespace Website.Models.Response
 
         public int CaretakerElfID { get; set; }
 
+        public string CaretakerElfName { get; set; }
+
         public string Status { get; set; }
 
         public ReindeerDetailsViewModel(Reindeer reindeer)
@@ -19,6 +21,9 @@ namespace Website.Models.Response
             this.Name = reindeer.Name;
             this.CaretakerElfID = reindeer.CaretakerElfID;
             this.Status = reindeer.Status;
+
+            var caretakerElf = ElvesManager.GetByID(reindeer.CaretakerElfID);
+            this.CaretakerElfName = caretakerElf.Name;
         }
     }
 }

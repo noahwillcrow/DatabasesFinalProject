@@ -1,0 +1,22 @@
+﻿@model Website.Models.Response.HouseUpdateResponseViewModel
+@{
+    ViewBag.Title = (string.IsNullOrEmpty(Model.FamilyName) ? "Create" : "Update") + " a house";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post">
+    <label for="FamilyName">Family name</label>
+    <input type="text" name="FamilyName" placeholder="FamilyName" value="@Model.FamilyName" />
+    <br />
+    <br />
+    <label for="Address">Address</label>
+    <input type="text" name="Address" placeholder="Address" value="@Model.Address" />
+    <br />
+    <br />
+    <label for="HasChimney">Has chimney</label>
+    <input type="checkbox" name="HasChimney" @(Model.HasChimney ? "checked" : string.Empty) />
+    <br />
+    <br />
+    <input type="submit" value="@(string.IsNullOrEmpty(Model.FamilyName) ? "Create" : "Update")" />
+</form>

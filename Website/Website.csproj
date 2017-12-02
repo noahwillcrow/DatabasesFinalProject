@@ -152,6 +152,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\PresentsController.cs" />
     <Compile Include="Controllers\HousesController.cs" />
     <Compile Include="Controllers\ReindeerController.cs" />
@@ -161,15 +162,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PresentViewModel.cs" />
+    <Compile Include="Models\Request\PresentUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Response\PresentUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\PresentDetailsViewModel.cs" />
+    <Compile Include="Models\Request\HouseUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Request\ItemUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ReindeerUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Response\HouseDetailsViewModel.cs" />
+    <Compile Include="Models\Response\HouseUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\ItemUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ReindeerUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ReindeerDetailsViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ElfDetailsViewModel.cs" />
-    <Compile Include="Models\Response\HouseDetailsViewModel.cs" />
     <Compile Include="Models\Response\KidDetailsViewModel.cs" />
     <Compile Include="Models\Response\KidUpdateResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,11 +227,21 @@
     <Content Include="Views\Elves\Details.cshtml" />
     <Content Include="Views\Elves\Index.cshtml" />
     <Content Include="Views\Elves\AddOrUpdate.cshtml" />
+    <Content Include="Views\Item\AddOrUpdate.cshtml" />
     <Content Include="Views\Kids\AddOrUpdate.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\Houses\Index.cshtml" />
+    <Content Include="Views\Houses\AddOrUpdate.cshtml" />
+    <Content Include="Views\Houses\Details.cshtml" />
+    <Content Include="Views\Reindeer\AddOrUpdate.cshtml" />
+    <Content Include="Views\Reindeer\Details.cshtml" />
+    <Content Include="Views\Reindeer\Index.cshtml" />
+    <Content Include="Views\Presents\AddOrUpdate.cshtml" />
+    <Content Include="Views\Presents\Details.cshtml" />
+    <Content Include="Views\Presents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Houses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -19,18 +19,6 @@ namespace Website.Controllers
         }
 
         /// <summary>
-        /// This page should show data on an item.
-        /// </summary>
-        /// <param name="reindeerId"></param>
-        /// <returns></returns>
-        public ActionResult Details(int id)
-        {
-            var item = DataManager<Item>.GetByID(id);
-            var viewModel = new ItemDetailsViewModel(item);
-            return View(viewModel);
-        }
-
-        /// <summary>
         /// This page should allow the user to edit a reindeer's records.
         /// </summary>
         /// <returns></returns>
@@ -38,7 +26,7 @@ namespace Website.Controllers
         {
             var item = DataManager<Item>.GetByID(id);
             var viewModel = new ItemUpdateResponseViewModel(item);
-            return View(viewModel);
+            return View("~/Views/Item/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
@@ -76,7 +64,7 @@ namespace Website.Controllers
             var viewModel = new ItemUpdateResponseViewModel(item);
             viewModel.UpdateSuccess = success;
 
-            return RedirectToAction("Details", new { id = item.ID });
+            return RedirectToAction("Index");
         }
     }
 }

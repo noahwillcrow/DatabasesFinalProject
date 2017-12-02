@@ -1,0 +1,15 @@
+﻿@model Website.Models.Response.PresentDetailsViewModel
+@{
+    ViewBag.Title = "Present Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Presents/Update?kidId=@Model.KidID&itemId=@Model.ItemID">Edit</a>
+
+<h3>Details</h3>
+<p>
+    Kid: <a href="/Kids/Details/@Model.KidID">@Model.KidName</a> <br />
+    Item: <a href="/Item/Details/@Model.ItemID">@Model.ItemName</a> <br />
+    Elf: <a href="/Elves/Details/@Model.KidID">@Model.KidName</a> <br />
+    Is done: @(Model.IsDone ? "Yes" : "No") <br />
+</p>

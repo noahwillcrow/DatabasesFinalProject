@@ -1,0 +1,21 @@
+﻿@model List<DatabaseBridge.Models.Reindeer>
+@{
+    ViewBag.Title = "Reindeer";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Reindeer/Create">Create a reindeer</a>
+
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Status</th> 
+    </tr>
+    @foreach (var reindeer in Model)
+    {
+        <tr>
+            <td><a href="/Reindeer/Details/@reindeer.ID">@reindeer.Name</a></td>
+            <td>@reindeer.Status</td>
+        </tr>
+    }
+</table>
