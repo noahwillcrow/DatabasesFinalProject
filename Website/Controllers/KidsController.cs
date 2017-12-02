@@ -25,13 +25,12 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="kidId">The ID of the kid to load data about</param>
         /// <returns></returns>
-        [Route("/kids/details/{kidId}")]
-        public ActionResult Details(int kidId)
+        public ActionResult Details(int id)
         {
-            var kid = KidsManager.GetByID(kidId);
-            var isNice = KidsManager.IsKidNice(kidId);
-            var deeds = KidsManager.GetDeeds(kidId);
-            var presents = KidsManager.GetPresents(kidId);
+            var kid = KidsManager.GetByID(id);
+            var isNice = KidsManager.IsKidNice(id);
+            var deeds = KidsManager.GetDeeds(id);
+            var presents = KidsManager.GetPresents(id);
 
             var viewModel = new KidDetailsViewModel(kid, isNice, deeds, presents);
             return View(viewModel);
@@ -41,17 +40,17 @@ namespace Website.Controllers
         /// This page should allow the user to edit a kid's records.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Update(int kidId)
+        public ActionResult Update(int id)
         {
-            var kid = KidsManager.GetByID(kidId);
+            var kid = KidsManager.GetByID(id);
             var viewModel = new KidUpdateResponseViewModel(kid);
             return View("~/Views/Kids/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int kidId, KidUpdateRequestViewModel requestModel)
+        public ActionResult Update(int id, KidUpdateRequestViewModel requestModel)
         {
-            var kid = KidsManager.GetByID(kidId);
+            var kid = KidsManager.GetByID(id);
             requestModel.UpdateKidModel(kid);
 
             bool success = KidsManager.Save(kid);

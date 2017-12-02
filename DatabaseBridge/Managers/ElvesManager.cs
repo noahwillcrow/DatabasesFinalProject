@@ -1,4 +1,5 @@
 ﻿using DatabaseBridge.Models;
+using DatabaseBridge.QueryResultModels;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -28,8 +29,13 @@ namespace DatabaseBridge.Managers
         {
             using (var context = GetContext())
             {
-                var reindeerOnList = context.Database.SqlQuery<Reindeer>("dbo.GetReindeerForElf @elfID", new SqlParameter("elfID", elfId)).ToList();
-                return reindeerOnList;
+                var reindeerOnList = context.Database.SqlQuery<ReindeerResultModel>("dbo.GetReindeerForElf @elfID", new SqlParameter("elfID", elfId)).ToList();
+                var result = new List<Reindeer>();
+                foreach (var reindeer in reindeerOnList)
+                {
+                    result.Add(reindeer.ConvertToModel());
+                }
+                return result;
             }
         }
 
@@ -37,11 +43,11 @@ namespace DatabaseBridge.Managers
         /// Returns the ratio of salary to presents made
         /// </summary>
         /// <param name="elfID">The elf that made the presents</param>
-        public static float GetSalaryToPresentsRatio(int elfId)
+        public static double GetSalaryToPresentsRatio(int elfId)
         {
             using (var context = GetContext())
             {
-                var ratio = context.Database.SqlQuery<float>("dbo.CalculateEarningsRatio(@elfID)", new SqlParameter("elfID", elfId)).FirstOrDefault();
+                var ratio = context.Database.SqlQuery<double>("SELECT dbo.CalculateEarningsRatio(@elfID)", new SqlParameter("elfID", elfId)).FirstOrDefault();
                 return ratio;
             }
         }
