@@ -14,6 +14,8 @@ namespace Website.Models.Response
 
         public bool UpdateSuccess { get; set; }
 
+        public ElfUpdateResponseViewModel() { }
+
         public ElfUpdateResponseViewModel(Elf elf)
         {
             this.Name = elf.Name;
