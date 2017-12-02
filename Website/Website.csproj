@@ -152,6 +152,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\PresentsController.cs" />
     <Compile Include="Controllers\HousesController.cs" />
     <Compile Include="Controllers\ReindeerController.cs" />
     <Compile Include="Controllers\ElvesController.cs" />
