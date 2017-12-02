@@ -1,4 +1,8 @@
 ﻿using System.Web.Mvc;
+using DatabaseBridge.Managers;
+using DatabaseBridge.Models;
+using Website.Models.Response;
+using Website.Models.Request;
 
 namespace Website.Controllers
 {
@@ -8,9 +12,10 @@ namespace Website.Controllers
         /// This page should simply show a paginated list of reindeer.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(int page = 1)
+        public ActionResult Index()
         {
-            return View();
+            var reindeer = DataManager<Reindeer>.GetAll();
+            return View(reindeer);
         }
 
         /// <summary>
@@ -18,24 +23,37 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="reindeerId"></param>
         /// <returns></returns>
-        public ActionResult Details(int reindeerId)
+        public ActionResult Details(int id)
         {
-            return View();
+            var reindeer = DataManager<Reindeer>.GetByID(id);
+            var viewModel = new ReindeerDetailsViewModel(reindeer);
+            return View(viewModel);
         }
 
         /// <summary>
         /// This page should allow the user to edit a reindeer's records.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Update(int kidId)
+        public ActionResult Update(int id)
         {
-            return View();
+            var reindeer = DataManager<Reindeer>.GetByID(id);
+            var viewModel = new ReindeerUpdateResponseViewModel(reindeer);
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int kidId, bool tempParameterPleaseRemoveThis) //Needs a request view model
+        public ActionResult Update(int id, ReindeerUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            return View();
+            var reindeer = DataManager<Reindeer>.GetByID(id);
+            requestModel.UpdateReindeerModel(reindeer);
+
+            bool success = DataManager<Reindeer>.Save(reindeer);
+
+            var viewModel = new ReindeerUpdateResponseViewModel(reindeer);
+            viewModel.UpdateSuccess = success;
+
+
+            return View("~/Views/Reindeer/AddOrUpdate.cshtml", viewModel);
         }
 
         /// <summary>
@@ -44,13 +62,21 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            return View();
+            return View("~/Views/Reindeer/AddOrUpdate.cshtml", new ReindeerUpdateResponseViewModel());
         }
 
         [HttpPost]
-        public ActionResult Create(bool tempParameterPleaseRemoveThis) //Needs a request view model
+        public ActionResult Create(ReindeerUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            return View();
+            var reindeer = new Reindeer();
+            requestModel.UpdateReindeerModel(reindeer);
+
+            bool success = DataManager<Reindeer>.Save(reindeer);
+
+            var viewModel = new ReindeerUpdateResponseViewModel(reindeer);
+            viewModel.UpdateSuccess = success;
+
+            return RedirectToAction("Details", new { id = reindeer.ID });
         }
     }
 }

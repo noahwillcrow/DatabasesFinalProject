@@ -161,10 +161,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentViewModel.cs" />
-    <Compile Include="Models\Request\HouseUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Request\ReindeerUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
-    <Compile Include="Models\Response\HouseUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\ReindeerUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\ReindeerDetailsViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ElfDetailsViewModel.cs" />
     <Compile Include="Models\Response\HouseDetailsViewModel.cs" />
