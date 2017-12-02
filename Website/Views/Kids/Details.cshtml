@@ -10,7 +10,7 @@
     Gender: @Model.Gender <br />
     Age: @Model.Age <br />
     List: @(Model.IsNice ? "Nice" : "Naughty") List <br />
-    Presents: @foreach (var presentItemName in Model.PresentItemNames) { @presentItemName, }
+    Presents: @foreach (var present in Model.Presents) { @present.ItemName<text>, </text> }
 </p>
 
 <h3>Deeds</h3>

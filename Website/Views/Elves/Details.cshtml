@@ -1,0 +1,34 @@
+﻿@model Website.Models.Response.ElfDetailsViewModel
+@{
+    ViewBag.Title = Model.Name + " Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Details</h3>
+<p>
+    Years on job: @Model.YearsOnJob <br />
+    Salary: @Model.Salary Cookies / Year <br />
+    Rank: @Model.Rank <br />
+    Ratio of salary to presents made: @Model.Ratio
+</p>
+
+<h3>Presents made</h3>
+<p>
+    @foreach (var present in Model.Presents)
+    {
+        <text>Receiving kid: </text> <a href="/Kids/Details/@present.KidID">@present.KidName</a> <br />
+        <text>Item: </text> @present.ItemName <br />
+        <text>Is done: </text> @(present.IsDone ? "Yes" : "No") <br />
+
+        <br />
+    }
+</p>
+
+<h3>Reindeer looked after</h3>
+<p>
+    @foreach (var reindeer in Model.Reindeer)
+    {
+        <a href="/Reindeer/Details/@reindeer.ID">@reindeer.Name</a> <br />
+    }
+</p>
