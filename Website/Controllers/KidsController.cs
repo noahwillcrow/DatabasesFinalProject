@@ -28,6 +28,11 @@ namespace Website.Controllers
         public ActionResult Details(int id)
         {
             var kid = KidsManager.GetByID(id);
+            if (kid == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             var isNice = KidsManager.IsKidNice(id);
             var deeds = KidsManager.GetDeeds(id);
             var presents = KidsManager.GetPresents(id);
@@ -67,7 +72,7 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            return View("~/Views/Kids/AddOrUpdate.cshtml");
+            return View("~/Views/Kids/AddOrUpdate.cshtml", new KidUpdateResponseViewModel());
         }
 
         [HttpPost]
@@ -81,7 +86,7 @@ namespace Website.Controllers
             var viewModel = new KidUpdateResponseViewModel(kid);
             viewModel.UpdateSuccess = success;
 
-            return RedirectToAction("Details", new { kidId = kid.ID });
+            return RedirectToAction("Details", new { id = kid.ID });
         }
 
         /// <summary>
@@ -92,7 +97,7 @@ namespace Website.Controllers
         public ActionResult List(bool nice)
         {
             var kids = KidsManager.GetList(nice);
-            return View(kids);
+            return View("~/Views/Kids/Index.cshtml", kids);
         }
 
         /// <summary>
