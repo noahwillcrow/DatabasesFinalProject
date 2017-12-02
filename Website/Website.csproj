@@ -152,6 +152,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
+    <Compile Include="Controllers\DeedsController.cs" />
+=======
+>>>>>>> master
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\PresentsController.cs" />
     <Compile Include="Controllers\HousesController.cs" />
@@ -162,17 +166,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Models\PresentViewModel.cs" />
+    <Compile Include="Models\Request\DeedUpdateRequestViewModel.cs" />
+=======
     <Compile Include="Models\Request\PresentUpdateRequestViewModel.cs" />
     <Compile Include="Models\Response\PresentUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\PresentDetailsViewModel.cs" />
     <Compile Include="Models\Request\HouseUpdateRequestViewModel.cs" />
+>>>>>>> master
     <Compile Include="Models\Request\ItemUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ReindeerUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
+<<<<<<< HEAD
+    <Compile Include="Models\Response\DeedUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\DeedDetailsViewModel.cs" />
+    <Compile Include="Models\Response\ItemUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\ItemDetailsViewModel.cs" />
+=======
     <Compile Include="Models\Response\HouseDetailsViewModel.cs" />
     <Compile Include="Models\Response\HouseUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ItemUpdateResponseViewModel.cs" />
+>>>>>>> master
     <Compile Include="Models\Response\ReindeerUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ReindeerDetailsViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />
@@ -185,7 +201,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\candy_cane_icon.png" />
-    <Content Include="Content\Images\christmas_red.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
