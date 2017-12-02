@@ -4,20 +4,20 @@ namespace Website.Models.Request
 {
     public class ElfUpdateRequestViewModel
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public int yearsOnJob { get; set; }
+        public int YearsOnJob { get; set; }
 
-        public int salary { get; set; }
+        public int Salary { get; set; }
 
-        public int rank { get; set; }
+        public int Rank { get; set; }
 
         public void UpdateElfModel(Elf elf)
         {
-            this.name = elf.Name;
-            this.yearsOnJob = elf.YearsOnJob;
-            this.salary = elf.Salary;
-            this.rank = elf.Rank;
+            elf.Name = this.Name;
+            elf.YearsOnJob = this.YearsOnJob;
+            elf.Salary = this.Salary;
+            elf.Rank = this.Rank;
         }
     }
 }

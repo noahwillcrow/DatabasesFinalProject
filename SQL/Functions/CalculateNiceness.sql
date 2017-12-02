@@ -9,5 +9,5 @@ begin
 	declare @naughtySum int
 	set @naughtySum = (select sum(Weight) from Deeds where KidID = @kidID and IsNice = 0)
 
-	return @niceSum - @naughtySum
+	return isnull(@niceSum - @naughtySum)
 end

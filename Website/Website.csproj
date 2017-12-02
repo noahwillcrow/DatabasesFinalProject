@@ -152,7 +152,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\ItemController.cs" />
+=======
+    <Compile Include="Controllers\PresentsController.cs" />
+    <Compile Include="Controllers\HousesController.cs" />
+>>>>>>> 214bde33e5b92ed0b5a7f8279c85dd479fc79f8e
     <Compile Include="Controllers\ReindeerController.cs" />
     <Compile Include="Controllers\ElvesController.cs" />
     <Compile Include="Controllers\KidsController.cs" />
@@ -171,6 +176,7 @@
     <Compile Include="Models\Response\ReindeerDetailsViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ElfDetailsViewModel.cs" />
+    <Compile Include="Models\Response\HouseDetailsViewModel.cs" />
     <Compile Include="Models\Response\KidDetailsViewModel.cs" />
     <Compile Include="Models\Response\KidUpdateResponseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,9 +226,12 @@
     <Content Include="Views\Kids\Details.cshtml" />
     <Content Include="Views\Elves\Details.cshtml" />
     <Content Include="Views\Elves\Index.cshtml" />
+    <Content Include="Views\Elves\AddOrUpdate.cshtml" />
+    <Content Include="Views\Kids\AddOrUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Houses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

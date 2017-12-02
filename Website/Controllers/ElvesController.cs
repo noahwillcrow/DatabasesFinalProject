@@ -26,6 +26,11 @@ namespace Website.Controllers
         public ActionResult Details(int id)
         {
             var elf = ElvesManager.GetByID(id);
+            if (elf == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             var ratio = ElvesManager.GetSalaryToPresentsRatio(id);
             var reindeer = ElvesManager.GetPresents(id);
             var presents = ElvesManager.GetReindeer(id);
@@ -66,7 +71,7 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
-            return View("~/Views/Elves/AddOrUpdate.cshtml");
+            return View("~/Views/Elves/AddOrUpdate.cshtml", new ElfUpdateResponseViewModel());
         }
 
         [HttpPost]
@@ -80,7 +85,7 @@ namespace Website.Controllers
             var viewModel = new ElfUpdateResponseViewModel(elf);
             viewModel.UpdateSuccess = success;
 
-            return RedirectToAction("Details", new { elfId = elf.ID });
+            return RedirectToAction("Details", new { id = elf.ID });
         }
     }
 }

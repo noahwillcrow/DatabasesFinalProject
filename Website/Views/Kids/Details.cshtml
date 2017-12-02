@@ -1,16 +1,20 @@
 ﻿@model Website.Models.Response.KidDetailsViewModel
 @{
     ViewBag.Title = Model.Name + " Details";
+
+    var listUrl = Model.IsNice ? "/Kids/List?nice=true" : "/Kids/List?nice=false";
+    var listName = Model.IsNice ? "Nice" : "Naughty";
 }
 
 <h2>@ViewBag.Title</h2>
+<a href="/Kids/Update/@Model.ID">Edit</a>
 
 <h3>Details</h3>
 <p>
+    House: <a href="/Houses/Details/@Model.HouseID">@Model.FamilyName</a> <br />
     Gender: @Model.Gender <br />
     Age: @Model.Age <br />
-    List: @(Model.IsNice ? "Nice" : "Naughty") List <br />
-    Presents: @foreach (var present in Model.Presents) { @present.ItemName<text>, </text> }
+    List: <a href="@listUrl">@listName List</a> <br />
 </p>
 
 <h3>Deeds</h3>
@@ -20,6 +24,18 @@
         <text>Description: </text> @deed.Description <br />
         <text>Weight: </text> @deed.Weight <br />
         <text>Type: </text> @(deed.IsNice ? "Nice" : "Naughty") <br />
+
+        <br />
+    }
+</p>
+
+<h3>Presents</h3>
+<p>
+    @foreach (var present in Model.Presents)
+    {
+        <text>Responsible elf: </text> <a href="/Elves/Details/@present.ElfID">@present.ElfName</a> <br />
+        <text>Item: </text> @present.ItemName <br />
+        <text>Is done: </text> @(present.IsDone ? "Yes" : "No") <br />
 
         <br />
     }

@@ -1,4 +1,5 @@
 ﻿using DatabaseBridge.Models;
+using DatabaseBridge.QueryResultModels;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,8 +14,31 @@ namespace DatabaseBridge.Managers
             var viewName = isNice ? "NiceKids" : "NaughtyKids";
             using (var context = GetContext())
             {
-                var kidsOnList = context.Database.SqlQuery<Kid>($"SELECT * FROM dbo.{viewName} ORDER BY KidID").ToList();
-                return kidsOnList;
+                var kidsOnList = context.Database.SqlQuery<KidResultModel>($"SELECT * FROM dbo.{viewName} ORDER BY KidID").ToList();
+                var result = new List<Kid>();
+                
+                foreach (var kid in kidsOnList)
+                {
+                    result.Add(kid.ConvertToModel());
+                }
+
+                return result;
+            }
+        }
+
+        public static IEnumerable<Kid> GetKidsInHouse(int houseId)
+        {
+            using (var context = GetContext())
+            {
+                var kids = context.Database.SqlQuery<KidResultModel>($"dbo.GetKidsInHouse @houseID", new SqlParameter("@houseID", houseId)).ToList();
+                var result = new List<Kid>();
+
+                foreach (var kid in kids)
+                {
+                    result.Add(kid.ConvertToModel());
+                }
+
+                return result;
             }
         }
 
