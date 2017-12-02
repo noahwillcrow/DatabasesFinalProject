@@ -1,0 +1,44 @@
+﻿@model Website.Models.Response.DeedUpdateResponseViewModel
+@{
+    ViewBag.Title = (Model.KidID == 0 || Model.TimeOfDeed == null ? "Create" : "Update") + " a deed";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (Model.UpdateSuccess)
+{
+    <h4 style="color: green;">Update successful.</h4>
+}
+
+<form method="post">
+    @if (Model.KidID == 0)
+    {
+        <label for="KidID">Kid</label>
+        <select name="KidID">
+            @foreach (var kid in DatabaseBridge.Managers.KidsManager.GetAll())
+            {
+                var attributes = kid.ID == Model.KidID ? "selected" : string.Empty;
+                <option value="@kid.ID" @attributes>@kid.Name</option>
+            }
+        </select>
+        <br />
+        <br />
+        <label for="TimeOfDeed">Time of deed</label>
+        <input type="text" name="TimeOfDeed" placeholder="Time of deed" value="@Model.TimeOfDeed" />
+        <br />
+        <br />
+    }
+    <label for="Description">Description</label>
+    <textarea name="Description" rows="4">@Model.Description</textarea>
+    <br />
+    <br />
+    <label for="Weight">Weight</label>
+    <input type="text" name="Weight" placeholder="Weight" value="@Model.Weight" />
+    <br />
+    <br />
+    <label for="IsNice">Is nice</label>
+    <input type="checkbox" name="IsNice" value="true" @(Model.IsNice ? "checked" : string.Empty) />
+    <input type="hidden" name="IsNice" value="false" />
+    <br />
+    <br />
+    <input type="submit" value="@(Model.KidID == 0 ? "Create" : "Update")" />
+</form>

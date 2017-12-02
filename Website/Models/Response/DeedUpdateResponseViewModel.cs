@@ -1,14 +1,19 @@
 ﻿using DatabaseBridge.Models;
+using System;
 
 namespace Website.Models.Response
 {
     public class DeedUpdateResponseViewModel
     {
-        public string description { get; set; }
+        public int KidID { get; set; }
         
-        public int weight { get; set; }
+        public DateTime TimeOfDeed { get; set; }
 
-        public bool isNice { get; set; }
+        public string Description { get; set; }
+        
+        public int Weight { get; set; }
+
+        public bool IsNice { get; set; }
 
         public bool UpdateSuccess { get; set; }
 
@@ -18,9 +23,11 @@ namespace Website.Models.Response
 
         public DeedUpdateResponseViewModel(Deed deed)
         {
-            this.description = deed.Description;
-            this.weight = deed.Weight;
-            this.isNice = deed.IsNice;
+            this.KidID = deed.KidID;
+            this.TimeOfDeed = deed.TimeOfDeed;
+            this.Description = deed.Description;
+            this.Weight = deed.Weight;
+            this.IsNice = deed.IsNice;
         }
     }
 }

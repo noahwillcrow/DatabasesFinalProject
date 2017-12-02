@@ -1,5 +1,7 @@
 ﻿using DatabaseBridge.Managers;
 using DatabaseBridge.Models;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Website.Models.Request;
 using Website.Models.Response;
@@ -15,17 +17,23 @@ namespace Website.Controllers
         public ActionResult Index()
         {
             var deeds = DeedsManager.GetAll();
-            return View(deeds);
+            var viewModel = new List<DeedDetailsViewModel>();
+
+            foreach (var deed in deeds)
+            {
+                viewModel.Add(new DeedDetailsViewModel(deed));
+            }
+
+            return View(viewModel);
         }
 
         /// <summary>
         /// This page should show all relevant data about a given deed. Such data includes the date, what happened, who did it, if it was naughty or nice, etc...
         /// </summary>
-        /// <param name="elfId"></param>
         /// <returns></returns>
-        public ActionResult Details(int id, System.DateTime timeOfDeed)
+        public ActionResult Details(int kidId, DateTime timeOfDeed)
         {
-            var deed = DeedsManager.GetDeeds(id, timeOfDeed);
+            var deed = DeedsManager.GetDeeds(kidId, timeOfDeed);
             if (deed == null)
             {
                 return RedirectToAction("Index");
@@ -39,17 +47,17 @@ namespace Website.Controllers
         /// This page should allow the user to edit a deed's records.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Update(int id, System.DateTime timeOfDeed)
+        public ActionResult Update(int kidId, DateTime timeOfDeed)
         {
-            var deed = DeedsManager.GetDeeds(id, timeOfDeed);
+            var deed = DeedsManager.GetDeeds(kidId, timeOfDeed);
             var viewModel = new DeedUpdateResponseViewModel(deed);
             return View("~/Views/Deeds/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int id, System.DateTime timeOfDeed, DeedUpdateRequestViewModel requestModel) //Needs a request view model
+        public ActionResult Update(int kidId, DateTime timeOfDeed, DeedUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            var deed = DeedsManager.GetDeeds(id, timeOfDeed);
+            var deed = DeedsManager.GetDeeds(kidId, timeOfDeed);
             requestModel.UpdateDeedModel(deed);
 
             bool success = DeedsManager.Save(deed);

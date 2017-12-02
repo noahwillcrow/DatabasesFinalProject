@@ -4,6 +4,10 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@if (Model.UpdateSuccess)
+{
+    <h4 style="color: green;">Update successful.</h4>
+}
 
 <form method="post">
     <label for="Name">Name</label>
@@ -18,7 +22,8 @@
     <select name="CaretakerElfID" value="@(Model.CaretakerElfID > 0 ? Model.CaretakerElfID.ToString() : string.Empty)">
         @foreach (var elf in DatabaseBridge.Managers.ElvesManager.GetAll())
         {
-            <option value="@elf.ID">@elf.Name</option>
+            var attributes = elf.ID == Model.CaretakerElfID ? "selected" : string.Empty;
+            <option value="@elf.ID" @attributes>@elf.Name</option>
         }
     </select>
     <br />

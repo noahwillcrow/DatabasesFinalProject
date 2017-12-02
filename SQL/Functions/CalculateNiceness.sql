@@ -4,10 +4,10 @@
 returns int as
 begin
 	declare @niceSum int
-	set @niceSum = (select sum(Weight) from Deeds where KidID = @kidID and IsNice = 1)
+	set @niceSum = isnull((select sum(Weight) from Deeds where KidID = @kidID and IsNice = 1), 0)
 
 	declare @naughtySum int
-	set @naughtySum = (select sum(Weight) from Deeds where KidID = @kidID and IsNice = 0)
+	set @naughtySum = isnull((select sum(Weight) from Deeds where KidID = @kidID and IsNice = 0), 0)
 
-	return isnull(@niceSum - @naughtySum)
+	return @niceSum - @naughtySum
 end

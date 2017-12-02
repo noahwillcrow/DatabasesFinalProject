@@ -1,20 +1,30 @@
 ﻿using DatabaseBridge.Models;
+using System;
 
 namespace Website.Models.Request
 {
     public class DeedUpdateRequestViewModel
     {
-        public string description { get; set; }
+        public int KidID { get; set; }
 
-        public int weight { get; set; }
+        public DateTime TimeOfDeed { get; set; }
 
-        public bool isNice { get; set; }
+        public string Description { get; set; }
+
+        public int Weight { get; set; }
+
+        public bool IsNice { get; set; }
 
         public void UpdateDeedModel(Deed deed)
         {
-            deed.Description = this.description;
-            deed.Weight = this.weight;
-            deed.IsNice = this.isNice;
+            if (deed.KidID == 0)
+            {
+                deed.KidID = this.KidID;
+                deed.TimeOfDeed = this.TimeOfDeed;
+            }
+            deed.Description = this.Description;
+            deed.Weight = this.Weight;
+            deed.IsNice = this.IsNice;
         }
     }
 }

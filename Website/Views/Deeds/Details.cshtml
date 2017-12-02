@@ -1,0 +1,16 @@
+﻿@model Website.Models.Response.DeedDetailsViewModel
+@{
+    ViewBag.Title = "Deed Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Deeds/Update?kidId=@Model.KidID&timeOfDeed=@Model.TimeOfDeed">Edit</a>
+
+<h3>Details</h3>
+<p>
+    Kid: <a href="/Kids/Details/@Model.KidID">@Model.KidName</a> <br />
+    Time of deed: @Model.TimeOfDeed.ToString() <br />
+    Weight: @Model.Weight <br />
+    Is nice: @(Model.IsNice ? "Yes" : "No") <br />
+    Description: @Model.Description <br />
+</p>

@@ -1,6 +1,6 @@
 create table dbo.Deeds (
 	KidID int not null,
-	TimeOfDeed datetime not null,
+	TimeOfDeed datetime2 not null,
 	Description nvarchar(200) not null,
 	Weight int not null, 
 	IsNice bit not null,

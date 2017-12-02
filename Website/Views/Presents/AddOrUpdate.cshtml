@@ -6,6 +6,10 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@if (Model.UpdateSuccess)
+{
+    <h4 style="color: green;">Update successful.</h4>
+}
 
 <form method="post">
     @if (Model.KidID == 0 || Model.ItemID == 0)
@@ -14,7 +18,8 @@
         <select name="KidID">
             @foreach (var kid in DatabaseBridge.Managers.KidsManager.GetAll())
             {
-                <option value="@kid.ID">@kid.Name</option>
+                var attributes = kid.ID == Model.KidID ? "selected" : string.Empty;
+                <option value="@kid.ID" @attributes>@kid.Name</option>
             }
         </select>
         <br />
@@ -23,23 +28,26 @@
         <select name="ItemID">
             @foreach (var item in DatabaseBridge.Managers.DataManager<Item>.GetAll())
             {
-                <option value="@item.ID">@item.Name</option>
+                var attributes = item.ID == Model.ItemID ? "selected" : string.Empty;
+                <option value="@item.ID" @attributes>@item.Name</option>
             }
         </select>
         <br />
         <br />
     }
     <label for="ElfID">Elf</label>
-    <select name="ElfID" value="@(Model.ElfID > 0 ? Model.ElfID.ToString() : string.Empty)">
+    <select name="ElfID">
         @foreach (var elf in DatabaseBridge.Managers.ElvesManager.GetAll())
         {
-            <option value="@elf.ID">@elf.Name</option>
+            var attributes = elf.ID == Model.ElfID ? "selected" : string.Empty;
+            <option value="@elf.ID" @attributes>@elf.Name</option>
         }
     </select>
     <br />
     <br />
     <label for="IsDone">Is done</label>
-    <input type="checkbox" name="IsDone" @(Model.IsDone ? "checked" : string.Empty) />
+    <input type="checkbox" name="IsDone" value="true" @(Model.IsDone ? "checked" : string.Empty) />
+    <input type="hidden" name="IsDone" value="false" />
     <br />
     <br />
     <input type="submit" value="@(Model.KidID == 0 || Model.ItemID == 0 ? "Create" : "Update")" />

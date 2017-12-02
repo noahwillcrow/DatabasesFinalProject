@@ -1,0 +1,25 @@
+﻿@model List<Website.Models.Response.DeedDetailsViewModel>
+@{
+    ViewBag.Title = "Deeds";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Deeds/Create">Create a deed</a>
+
+<table style="width:100%">
+    <tr>
+        <th>Kid</th>
+        <th>Weight</th> 
+        <th>Is nice</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var deed in Model)
+    {
+        <tr>
+            <td>@deed.KidName</td>
+            <td>@deed.Weight</td>
+            <td>@(deed.IsNice ? "Yes" : "No") </td>
+            <td><a href="/Deeds/Details?kidId=@deed.KidID&timeOfDeed=@deed.TimeOfDeed">View</a></td>
+        </tr>
+    }
+</table>

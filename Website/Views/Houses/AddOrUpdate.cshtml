@@ -4,6 +4,10 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@if (Model.UpdateSuccess)
+{
+    <h4 style="color: green;">Update successful.</h4>
+}
 
 <form method="post">
     <label for="FamilyName">Family name</label>
@@ -15,7 +19,8 @@
     <br />
     <br />
     <label for="HasChimney">Has chimney</label>
-    <input type="checkbox" name="HasChimney" @(Model.HasChimney ? "checked" : string.Empty) />
+    <input type="checkbox" name="HasChimney" value="true" @(Model.HasChimney ? "checked" : string.Empty) />
+    <input type="hidden" name="HasChimney" value="false" />
     <br />
     <br />
     <input type="submit" value="@(string.IsNullOrEmpty(Model.FamilyName) ? "Create" : "Update")" />
