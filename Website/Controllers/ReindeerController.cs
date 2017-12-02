@@ -38,7 +38,7 @@ namespace Website.Controllers
         {
             var reindeer = DataManager<Reindeer>.GetByID(id);
             var viewModel = new ReindeerUpdateResponseViewModel(reindeer);
-            return View(viewModel);
+            return View("~/Views/Reindeer/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]

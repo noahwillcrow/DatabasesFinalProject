@@ -22,7 +22,7 @@ namespace Website.Models.Response
 
         public IEnumerable<Deed> Deeds { get; set; }
 
-        public IEnumerable<PresentViewModel> Presents { get; set; }
+        public IEnumerable<PresentDetailsViewModel> Presents { get; set; }
 
         public KidDetailsViewModel(Kid kid, bool isNice, IEnumerable<Deed> deeds, IEnumerable<Present> presents)
         {
@@ -37,10 +37,10 @@ namespace Website.Models.Response
             var house = DatabaseBridge.Managers.DataManager<House>.GetByID(kid.HouseID);
             FamilyName = house.FamilyName;
 
-            var presentViewModels = new List<PresentViewModel>();
+            var presentViewModels = new List<PresentDetailsViewModel>();
             foreach (var present in presents)
             {
-                presentViewModels.Add(new PresentViewModel(present));
+                presentViewModels.Add(new PresentDetailsViewModel(present));
             }
             this.Presents = presentViewModels;
         }

@@ -1,0 +1,22 @@
+﻿@model Website.Models.Response.HouseDetailsViewModel
+@{
+    ViewBag.Title = Model.FamilyName + " Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Houses/Update/@Model.ID">Edit</a>
+
+<h3>Details</h3>
+<p>
+    Address: @Model.Address <br />
+    Has chimney: @(Model.HasChimney ? "Yes" : "No") <br />
+</p>
+
+<h3>Kids</h3>
+<p>
+    @foreach (var kid in Model.Kids)
+    {
+        <a href="/Kids/Details/@kid.ID">@kid.Name, @kid.Age</a>
+        <br />
+    }
+</p>

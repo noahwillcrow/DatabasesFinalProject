@@ -1,0 +1,13 @@
+﻿@model Website.Models.Response.ReindeerDetailsViewModel
+@{
+    ViewBag.Title = Model.Name + " Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Reindeer/Update/@Model.ID">Edit</a>
+
+<h3>Details</h3>
+<p>
+    Elf: <a href="/Elves/Details/@Model.CaretakerElfID">@Model.CaretakerElfName</a> <br />
+    Status: @Model.Status <br />
+</p>

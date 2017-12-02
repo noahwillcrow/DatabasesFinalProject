@@ -1,9 +1,9 @@
 ﻿using DatabaseBridge.Managers;
 using DatabaseBridge.Models;
 
-namespace Website.Models
+namespace Website.Models.Response
 {
-    public class PresentViewModel
+    public class PresentDetailsViewModel
     {
         public int KidID { get; set; }
         public string KidName { get; set; }
@@ -16,7 +16,7 @@ namespace Website.Models
 
         public bool IsDone { get; set; }
 
-        public PresentViewModel(Present present)
+        public PresentDetailsViewModel(Present present)
         {
             var kid = KidsManager.GetByID(present.KidID);
             this.KidID = present.KidID;
