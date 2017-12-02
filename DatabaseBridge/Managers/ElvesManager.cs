@@ -7,33 +7,42 @@ namespace DatabaseBridge.Managers
 {
     public class ElvesManager : DataManager<Elf>
     {
-        //returns a list of all elves and their parameters
-        public static IEnumerable<Elf> GetPaginatedList()
+        /// <summary>
+        /// Returns a list of presents allotted to an elf with id elfId
+        /// </summary>
+        /// <param name="elfID">The elf that made the presents</param>
+        public static IEnumerable<Present> GetPresents(int elfId)
         {
             using (var context = GetContext())
             {
-                var elvesOnList = context.Database.SqlQuery<Elf>($"SELECT * FROM dbo ORDER BY ElfID").ToList();
-                return elvesOnList;
-            }      
-        }
-
-        //returns a list of presents allotted to an elf with id elfId
-        public static IEnumerable<Present> GetPresents(int elfID)
-        {
-            using (var context = GetContext())
-            {
-                var presentsOnList = context.Database.SqlQuery<Present>("dbo.GetPresentsForElf", new SqlParameter("@elfId", elfID));
+                var presentsOnList = context.Database.SqlQuery<Present>("dbo.GetPresentsForElf @elfID", new SqlParameter("elfID", elfId)).ToList();
                 return presentsOnList;
             }
         }
 
-        //returns a list of all reindeer allotted to an elf with id elfId
-        public static IEnumerable<Reindeer> GetReindeer(int elfID)
+        /// <summary>
+        /// Returns a list of reindeer allotted to an elf with id elfId
+        /// </summary>
+        /// <param name="elfID">The elf that takes care of the reindeer</param>
+        public static IEnumerable<Reindeer> GetReindeer(int elfId)
         {
             using (var context = GetContext())
             {
-                var reindeerOnList = context.Database.SqlQuery<Reindeer>("dbo.GetReindeerForElf", new SqlParameter("@elfId", elfID));
+                var reindeerOnList = context.Database.SqlQuery<Reindeer>("dbo.GetReindeerForElf @elfID", new SqlParameter("elfID", elfId)).ToList();
                 return reindeerOnList;
+            }
+        }
+
+        /// <summary>
+        /// Returns the ratio of salary to presents made
+        /// </summary>
+        /// <param name="elfID">The elf that made the presents</param>
+        public static float GetSalaryToPresentsRatio(int elfId)
+        {
+            using (var context = GetContext())
+            {
+                var ratio = context.Database.SqlQuery<float>("dbo.CalculateEarningsRatio(@elfID)", new SqlParameter("elfID", elfId)).FirstOrDefault();
+                return ratio;
             }
         }
     }

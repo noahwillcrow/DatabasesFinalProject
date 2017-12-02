@@ -14,7 +14,7 @@ namespace Website.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var elves = ElvesManager.GetPaginatedList();
+            var elves = ElvesManager.GetAll();
             return View(elves);
         }
 
@@ -23,13 +23,14 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="elfId"></param>
         /// <returns></returns>
-        public ActionResult Details(int elfID)
+        public ActionResult Details(int elfId)
         {
-            var elf = ElvesManager.GetByID(elfID);
-            var reindeer = ElvesManager.GetPresents(elfID);
-            var presents = ElvesManager.GetReindeer(elfID);
+            var elf = ElvesManager.GetByID(elfId);
+            var ratio = ElvesManager.GetSalaryToPresentsRatio(elfId);
+            var reindeer = ElvesManager.GetPresents(elfId);
+            var presents = ElvesManager.GetReindeer(elfId);
 
-            var viewModel = new ElfDetailsViewModel(elf, presents, reindeer);
+            var viewModel = new ElfDetailsViewModel(elf, ratio, presents, reindeer);
             return View(viewModel);
         }
 
@@ -52,7 +53,7 @@ namespace Website.Controllers
 
             bool success = ElvesManager.Save(elf);
 
-            var viewModel = new KidUpdateResponseViewModel(elf);
+            var viewModel = new ElfUpdateResponseViewModel(elf);
             viewModel.UpdateSuccess = success;
 
 
@@ -77,7 +78,7 @@ namespace Website.Controllers
             bool success = ElvesManager.Save(elf);
 
             var viewModel = new ElfUpdateResponseViewModel(elf);
-            viewModel.updateSuccess = success;
+            viewModel.UpdateSuccess = success;
 
             return RedirectToAction("Details", new { elfId = elf.ID });
         }

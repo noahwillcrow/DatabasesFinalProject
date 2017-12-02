@@ -159,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PresentViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />
@@ -209,6 +210,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kids\Index.cshtml" />
+    <Content Include="Views\Kids\Details.cshtml" />
+    <Content Include="Views\Elves\Details.cshtml" />
+    <Content Include="Views\Elves\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

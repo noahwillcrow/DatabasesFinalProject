@@ -4,22 +4,22 @@ namespace Website.Models.Response
 {
     public class ElfUpdateResponseViewModel
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public int yearsOnJob { get; set; }
+        public int YearsOnJob { get; set; }
 
-        public int salary { get; set; }
+        public int Salary { get; set; }
 
-        public int rank { get; set; }
+        public int Rank { get; set; }
 
-        public bool updateSuccess { get; set; }
+        public bool UpdateSuccess { get; set; }
 
         public ElfUpdateResponseViewModel(Elf elf)
         {
-            this.name = elf.Name;
-            this.yearsOnJob = elf.YearsOnJob;
-            this.salary = elf.Salary;
-            this.rank = elf.Rank;
+            this.Name = elf.Name;
+            this.YearsOnJob = elf.YearsOnJob;
+            this.Salary = elf.Salary;
+            this.Rank = elf.Rank;
         }       
     }
 }

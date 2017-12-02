@@ -15,11 +15,13 @@ namespace Website.Models.Response
 
         public int Rank { get; set; }
 
+        public float Ratio { get; set; }
+
         public IEnumerable<Reindeer> Reindeer { get; set; }
 
-        public IEnumerable<Present> Presents { get; set; }
+        public IEnumerable<PresentViewModel> Presents { get; set; }
 
-        public ElfDetailsViewModel(Elf elf, IEnumerable<Reindeer> reindeer, IEnumerable<Present> presents)
+        public ElfDetailsViewModel(Elf elf, float ratio, IEnumerable<Reindeer> reindeer, IEnumerable<Present> presents)
         {
             this.ID = elf.ID;
             this.Name = elf.Name;
@@ -27,7 +29,15 @@ namespace Website.Models.Response
             this.Salary = elf.Salary;
             this.Rank = elf.Rank;
             this.Reindeer = reindeer;
-            this.Presents = presents;
+
+            this.Ratio = ratio;
+
+            var presentViewModels = new List<PresentViewModel>();
+            foreach (var present in presents)
+            {
+                presentViewModels.Add(new PresentViewModel(present));
+            }
+            this.Presents = presentViewModels;
         }
     }
 }
