@@ -6,19 +6,18 @@ namespace DatabaseBridge.Models
     [Table("Presents")]
     public class Present
     {
-        [Column("KidID")]
+        [Column("KidID", Order = 1)]
         [Required]
         [Key]
         public int KidID { get; set; }
 
-        [Column("ItemID")]
+        [Column("ItemID", Order = 2)]
         [Required]
         [Key]
         public int ItemID { get; set; }
 
         [Column("ElfID")]
         [Required]
-        [Key]
         public int ElfID { get; set; }
 
         [Column("IsDone")]

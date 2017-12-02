@@ -12,9 +12,10 @@ namespace Website.Controllers
         /// This page should simply load a paginated list of kids
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index(int page = 1)
+        [Route("/kids")]
+        public ActionResult Index()
         {
-            var kids = KidsManager.GetPage(pagesize: 10, pagenumber: page);
+            var kids = KidsManager.GetAll();
             return View(kids);
         }
 
@@ -24,6 +25,7 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="kidId">The ID of the kid to load data about</param>
         /// <returns></returns>
+        [Route("/kids/details/{kidId}")]
         public ActionResult Details(int kidId)
         {
             var kid = KidsManager.GetByID(kidId);
@@ -39,6 +41,7 @@ namespace Website.Controllers
         /// This page should allow the user to edit a kid's records.
         /// </summary>
         /// <returns></returns>
+        [Route("/kids/update/{kidId}")]
         public ActionResult Update(int kidId)
         {
             var kid = KidsManager.GetByID(kidId);
@@ -47,6 +50,7 @@ namespace Website.Controllers
         }
 
         [HttpPost]
+        [Route("/kids/update/{kidId}")]
         public ActionResult Update(int kidId, KidUpdateRequestViewModel requestModel)
         {
             var kid = KidsManager.GetByID(kidId);
@@ -64,12 +68,14 @@ namespace Website.Controllers
         /// This page should allow the user to create a new kid in the records.
         /// </summary>
         /// <returns></returns>
+        [Route("/kids/create")]
         public ActionResult Create()
         {
             return View("~/Views/Kids/AddOrUpdate.cshtml");
         }
 
         [HttpPost]
+        [Route("/kids/create")]
         public ActionResult Create(KidUpdateRequestViewModel requestModel)
         {
             var kid = new Kid();
@@ -88,9 +94,10 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="nice">Whether to load the nice list or the naughty list</param>
         /// <returns></returns>
-        public ActionResult List(bool nice, int page = 1)
+        [Route("/kids/list/{nice}")]
+        public ActionResult List(bool nice)
         {
-            var kids = KidsManager.GetPaginatedList(nice, pagesize: 10, pagenumber: page);
+            var kids = KidsManager.GetList(nice);
             return View(kids);
         }
 
@@ -98,9 +105,10 @@ namespace Website.Controllers
         /// This page should show a list of all houses in which all kids are nice and receiving presents
         /// </summary>
         /// <returns></returns>
-        public ActionResult GoodHouses(int page = 1)
+        [Route("/kids/good-houses")]
+        public ActionResult GoodHouses()
         {
-            var goodHouses = HousesManager.GetHousesWithOnlyNiceKids(pagesize: 10, pagenumber: page);
+            var goodHouses = HousesManager.GetHousesWithOnlyNiceKids();
             return View(goodHouses);
         }
     }

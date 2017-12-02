@@ -7,12 +7,12 @@ namespace DatabaseBridge.Models
     [Table("Deeds")]
     public class Deed
     {
-        [Column("KidID")]
+        [Column("KidID", Order = 1)]
         [Required]
         [Key]
         public int KidID { get; set; }
 
-        [Column("TimeOfDeed")]
+        [Column("TimeOfDeed", Order = 2)]
         [Required]
         [Key]
         public DateTime TimeOfDeed { get; set; }
