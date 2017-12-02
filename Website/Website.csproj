@@ -152,6 +152,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ReindeerController.cs" />
     <Compile Include="Controllers\ElvesController.cs" />
     <Compile Include="Controllers\KidsController.cs" />
@@ -160,9 +161,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentViewModel.cs" />
+    <Compile Include="Models\Request\ItemUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ReindeerUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\ElfUpdateRequestViewModel.cs" />
     <Compile Include="Models\Request\KidUpdateRequestViewModel.cs" />
+    <Compile Include="Models\Response\ItemUpdateResponseViewModel.cs" />
+    <Compile Include="Models\Response\ItemDetailsViewModel.cs" />
     <Compile Include="Models\Response\ReindeerUpdateResponseViewModel.cs" />
     <Compile Include="Models\Response\ReindeerDetailsViewModel.cs" />
     <Compile Include="Models\Response\ElfUpdateResponseViewModel.cs" />

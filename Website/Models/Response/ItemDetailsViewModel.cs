@@ -15,6 +15,5 @@ namespace Website.Models.Response
             this.ID = item.ID;
             this.Name = item.Name;
         }
-
     }
 }
