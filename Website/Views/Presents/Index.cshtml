@@ -1,0 +1,25 @@
+﻿@model List<Website.Models.Response.PresentDetailsViewModel>
+@{
+    ViewBag.Title = "Presents";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Presents/Create">Create a present</a>
+
+<table style="width:100%">
+    <tr>
+        <th>Kid</th>
+        <th>Item</th> 
+        <th>Elf</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var present in Model)
+    {
+        <tr>
+            <td>@present.KidName</td>
+            <td>@present.ItemName</td>
+            <td>@present.ElfName</td>
+            <td><a href="/Presents/Details?kidId=@present.KidID&itemId=@present.ItemID">View</a></td>
+        </tr>
+    }
+</table>

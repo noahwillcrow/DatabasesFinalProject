@@ -1,70 +1,75 @@
 ﻿using DatabaseBridge.Managers;
 using DatabaseBridge.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Website.Models.Request;
 using Website.Models.Response;
 
 namespace Website.Controllers
 {
-    public class HousesController : Controller
+    public class PresentsController : Controller
     {
         public ActionResult Index()
         {
-            var houses = HousesManager.GetAll();
-            return View(houses);
-        }
+            var presents = PresentsManager.GetAll();
+            var viewModel = new List<PresentDetailsViewModel>();
 
-        public ActionResult Details(int id)
-        {
-            var house = HousesManager.GetByID(id);
-            if (house == null)
+            foreach (var present in presents)
             {
-                return RedirectToAction("Index");
+                viewModel.Add(new PresentDetailsViewModel(present));
             }
-
-            var viewModel = new HouseDetailsViewModel(house);
 
             return View(viewModel);
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Details(int kidId, int itemId)
         {
-            var house = HousesManager.GetByID(id);
-            var viewModel = new HouseUpdateResponseViewModel(house);
-            return View("~/Views/Houses/AddOrUpdate.cshtml", viewModel);
+            var present = PresentsManager.GetPresent(kidId, itemId);
+            if (present == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var viewModel = new PresentDetailsViewModel(present);
+
+            return View(viewModel);
+        }
+
+        public ActionResult Update(int kidId, int itemId)
+        {
+            var present = PresentsManager.GetPresent(kidId, itemId);
+            var viewModel = new PresentUpdateResponseViewModel(present);
+            return View("~/Views/Presents/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int id, HouseUpdateRequestViewModel requestModel)
+        public ActionResult Update(int kidId, int itemId, PresentUpdateRequestViewModel requestModel)
         {
-            var house = HousesManager.GetByID(id);
-            requestModel.UpdateHouseModel(house);
+            var present = PresentsManager.GetPresent(kidId, itemId);
+            requestModel.UpdatePresentModel(present);
 
-            bool success = HousesManager.Save(house);
+            bool success = PresentsManager.Save(present);
 
-            var viewModel = new HouseUpdateResponseViewModel(house);
+            var viewModel = new PresentUpdateResponseViewModel(present);
             viewModel.UpdateSuccess = success;
 
-            return View("~/Views/Houses/AddOrUpdate.cshtml", viewModel);
+            return View("~/Views/Presents/AddOrUpdate.cshtml", viewModel);
         }
 
         public ActionResult Create()
         {
-            return View("~/Views/Houses/AddOrUpdate.cshtml", new HouseUpdateResponseViewModel());
+            return View("~/Views/Presents/AddOrUpdate.cshtml", new PresentUpdateResponseViewModel());
         }
 
         [HttpPost]
-        public ActionResult Create(HouseUpdateRequestViewModel requestModel)
+        public ActionResult Create(PresentUpdateRequestViewModel requestModel)
         {
-            var house = new House();
-            requestModel.UpdateHouseModel(house);
+            var present = new Present();
+            requestModel.UpdatePresentModel(present);
 
-            bool success = HousesManager.Save(house);
+            bool success = PresentsManager.Save(present);
 
-            var viewModel = new HouseUpdateResponseViewModel(house);
-            viewModel.UpdateSuccess = success;
-
-            return RedirectToAction("Details", new { id = house.ID });
+            return RedirectToAction("Details", new { kidId = present.KidID, itemId = present.ItemID });
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿@model Website.Models.Response.ReindeerUpdateResponseViewModel
+@{
+    ViewBag.Title = (string.IsNullOrEmpty(Model.Name) ? "Create" : "Update") + " a reindeer";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post">
+    <label for="Name">Name</label>
+    <input type="text" name="Name" placeholder="Name" value="@Model.Name" />
+    <br />
+    <br />
+    <label for="Status">Status</label>
+    <input type="text" name="Status" placeholder="Status" value="@Model.Status" />
+    <br />
+    <br />
+    <label for="CaretakerElfID">Caretaker Elf</label>
+    <select name="CaretakerElfID" value="@(Model.CaretakerElfID > 0 ? Model.CaretakerElfID.ToString() : string.Empty)">
+        @foreach (var elf in DatabaseBridge.Managers.ElvesManager.GetAll())
+        {
+            <option value="@elf.ID">@elf.Name</option>
+        }
+    </select>
+    <br />
+    <br />
+    <input type="submit" value="@(string.IsNullOrEmpty(Model.Name) ? "Create" : "Update")" />
+</form>

@@ -1,0 +1,23 @@
+﻿@model List<DatabaseBridge.Models.House>
+@{
+    ViewBag.Title = "Houses";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Houses/Create">Create a house</a>
+
+<table style="width:100%">
+    <tr>
+        <th>Family Name</th>
+        <th>Address</th> 
+        <th>Has chimney</th> 
+    </tr>
+    @foreach (var house in Model)
+    {
+        <tr>
+            <td><a href="/Houses/Details/@house.ID">@house.FamilyName</a></td>
+            <td>@house.Address</td>
+            <td>@(house.HasChimney ? "Yes" : "No")</td>
+        </tr>
+    }
+</table>
