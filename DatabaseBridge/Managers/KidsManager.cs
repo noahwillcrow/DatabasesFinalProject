@@ -20,8 +20,9 @@ namespace DatabaseBridge.Managers
 
         public static bool IsKidNice(int kidId)
         {
-            using (var context = GetContext()) {
-                var niceness = context.Database.SqlQuery<int>("SELECT dbo.CalculateNiceness(@kidId)", new SqlParameter("kidId", kidId)).First();
+            using (var context = GetContext())
+            {
+                var niceness = context.Database.SqlQuery<int>("SELECT dbo.CalculateNiceness(@kidId)", new SqlParameter("@kidID", kidId)).First();
                 return niceness > 0;
             }
         }
@@ -30,7 +31,7 @@ namespace DatabaseBridge.Managers
         {
             using (var context = GetContext())
             {
-                var deeds = context.Database.SqlQuery<Deed>("dbo.GetDeedsForKid", new SqlParameter("kidId", kidId)).ToList();
+                var deeds = context.Database.SqlQuery<Deed>("dbo.GetDeedsForKid @kidID", new SqlParameter("kidID", kidId)).ToList();
                 return deeds;
             }
         }
@@ -39,7 +40,7 @@ namespace DatabaseBridge.Managers
         {
             using (var context = GetContext())
             {
-                var presents = context.Database.SqlQuery<Present>("dbo.GetPresentsForKid", new SqlParameter("kidId", kidId)).ToList();
+                var presents = context.Database.SqlQuery<Present>("dbo.GetPresentsForKid @kidID", new SqlParameter("@kidID", kidId)).ToList();
                 return presents;
             }
         }

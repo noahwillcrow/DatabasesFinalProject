@@ -1,0 +1,26 @@
+﻿@model Website.Models.Response.KidDetailsViewModel
+@{
+    ViewBag.Title = Model.Name + " Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Details</h3>
+<p>
+    Gender: @Model.Gender <br />
+    Age: @Model.Age <br />
+    List: @(Model.IsNice ? "Nice" : "Naughty") List <br />
+    Presents: @foreach (var presentItemName in Model.PresentItemNames) { @presentItemName, }
+</p>
+
+<h3>Deeds</h3>
+<p>
+    @foreach (var deed in Model.Deeds)
+    {
+        <text>Description: </text> @deed.Description <br />
+        <text>Weight: </text> @deed.Weight <br />
+        <text>Type: </text> @(deed.IsNice ? "Nice" : "Naughty") <br />
+
+        <br />
+    }
+</p>

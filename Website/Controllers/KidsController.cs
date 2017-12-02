@@ -32,8 +32,15 @@ namespace Website.Controllers
             var isNice = KidsManager.IsKidNice(kidId);
             var deeds = KidsManager.GetDeeds(kidId);
             var presents = KidsManager.GetPresents(kidId);
+            var presentItemNames = new List<string>();
 
-            var viewModel = new KidDetailsViewModel(kid, isNice, deeds, presents);
+            foreach (var present in presents)
+            {
+                var item = DataManager<Item>.GetByID(present.ItemID);
+                presentItemNames.Add(item.Name);
+            }
+
+            var viewModel = new KidDetailsViewModel(kid, isNice, deeds, presentItemNames);
             return View(viewModel);
         }
 
