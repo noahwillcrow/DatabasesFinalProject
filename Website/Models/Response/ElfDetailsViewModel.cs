@@ -15,13 +15,13 @@ namespace Website.Models.Response
 
         public int Rank { get; set; }
 
-        public float Ratio { get; set; }
+        public double Ratio { get; set; }
 
         public IEnumerable<Reindeer> Reindeer { get; set; }
 
         public IEnumerable<PresentViewModel> Presents { get; set; }
 
-        public ElfDetailsViewModel(Elf elf, float ratio, IEnumerable<Reindeer> reindeer, IEnumerable<Present> presents)
+        public ElfDetailsViewModel(Elf elf, double ratio, IEnumerable<Reindeer> reindeer, IEnumerable<Present> presents)
         {
             this.ID = elf.ID;
             this.Name = elf.Name;

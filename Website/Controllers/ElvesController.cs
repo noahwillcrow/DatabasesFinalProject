@@ -23,12 +23,12 @@ namespace Website.Controllers
         /// </summary>
         /// <param name="elfId"></param>
         /// <returns></returns>
-        public ActionResult Details(int elfId)
+        public ActionResult Details(int id)
         {
-            var elf = ElvesManager.GetByID(elfId);
-            var ratio = ElvesManager.GetSalaryToPresentsRatio(elfId);
-            var reindeer = ElvesManager.GetPresents(elfId);
-            var presents = ElvesManager.GetReindeer(elfId);
+            var elf = ElvesManager.GetByID(id);
+            var ratio = ElvesManager.GetSalaryToPresentsRatio(id);
+            var reindeer = ElvesManager.GetPresents(id);
+            var presents = ElvesManager.GetReindeer(id);
 
             var viewModel = new ElfDetailsViewModel(elf, ratio, presents, reindeer);
             return View(viewModel);
@@ -38,17 +38,17 @@ namespace Website.Controllers
         /// This page should allow the user to edit an elf's records.
         /// </summary>
         /// <returns></returns>
-        public ActionResult Update(int elfID)
+        public ActionResult Update(int id)
         {
-            var elf = ElvesManager.GetByID(elfID);
+            var elf = ElvesManager.GetByID(id);
             var viewModel = new ElfUpdateResponseViewModel(elf);
             return View("~/Views/Elves/AddOrUpdate.cshtml", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(int elfID, ElfUpdateRequestViewModel requestModel) //Needs a request view model
+        public ActionResult Update(int id, ElfUpdateRequestViewModel requestModel) //Needs a request view model
         {
-            var elf = ElvesManager.GetByID(elfID);
+            var elf = ElvesManager.GetByID(id);
             requestModel.UpdateElfModel(elf);
 
             bool success = ElvesManager.Save(elf);
