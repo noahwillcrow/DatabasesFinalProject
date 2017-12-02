@@ -58,3 +58,8 @@ textarea {
     width: 40px;
     margin: 5px;
 }
+
+label {
+    display: inline-block;
+    width: 100px;
+}

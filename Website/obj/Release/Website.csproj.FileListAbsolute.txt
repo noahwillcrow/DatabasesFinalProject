@@ -47,3 +47,7 @@ C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\obj\Releas
 C:\Users\ncrowley\Documents\GitHub\DatabasesFinalProject\Website\obj\Release\Website.csprojResolveAssemblyReference.cache
 C:\Users\ncrowley\Documents\GitHub\DatabasesFinalProject\Website\obj\Release\Website.dll
 C:\Users\ncrowley\Documents\GitHub\DatabasesFinalProject\Website\obj\Release\Website.pdb
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\NwcLib.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.pdb
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\Website\bin\DatabaseBridge.dll.config

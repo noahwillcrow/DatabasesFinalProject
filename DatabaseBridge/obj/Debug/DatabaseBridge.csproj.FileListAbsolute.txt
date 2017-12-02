@@ -22,3 +22,5 @@ C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\bin
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\obj\Debug\DatabaseBridge.csproj.CoreCompileInputs.cache
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\obj\Debug\DatabaseBridge.dll
 C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\obj\Debug\DatabaseBridge.pdb
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\bin\Debug\NwcLib.dll
+C:\Users\NoahWC\Documents\GitHub\School\DatabasesFinalProject\DatabaseBridge\obj\Debug\DatabaseBridge.csprojResolveAssemblyReference.cache

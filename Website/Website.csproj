@@ -58,7 +58,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NwcLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\GoogleDrive\Programming\Visual Studio Projects\NwcLib\NwcLib.dll</HintPath>
+      <HintPath>..\dlls\NwcLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
