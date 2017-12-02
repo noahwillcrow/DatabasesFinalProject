@@ -10,6 +10,8 @@ namespace Website.Models.Response
 
         public int HouseID { get; set; }
 
+        public string FamilyName { get; set; }
+
         public string Name { get; set; }
 
         public string Gender { get; set; }
@@ -31,6 +33,9 @@ namespace Website.Models.Response
             this.Age = kid.Age;
             this.IsNice = isNice;
             this.Deeds = deeds;
+
+            var house = DatabaseBridge.Managers.DataManager<House>.GetByID(kid.HouseID);
+            FamilyName = house.FamilyName;
 
             var presentViewModels = new List<PresentViewModel>();
             foreach (var present in presents)

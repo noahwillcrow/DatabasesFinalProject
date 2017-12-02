@@ -15,6 +15,8 @@ namespace Website.Models.Response
 
         public bool UpdateSuccess { get; set; }
 
+        public KidUpdateResponseViewModel() { }
+
         public KidUpdateResponseViewModel(Kid kid)
         {
             this.HouseID = kid.HouseID;
