@@ -8,13 +8,12 @@ namespace DatabaseBridge.Managers
     public class KidsManager : DataManager<Kid>
     {
 
-        public static IEnumerable<Kid> GetPaginatedList(bool isNice, int pagesize, int pagenumber)
+        public static IEnumerable<Kid> GetList(bool isNice)
         {
             var viewName = isNice ? "NiceKids" : "NaughtyKids";
-            var skippedEntities = pagesize * (pagenumber - 1);
             using (var context = GetContext())
             {
-                var kidsOnList = context.Database.SqlQuery<Kid>($"SELECT * FROM dbo.{viewName} ORDER BY KidID SKIP {skippedEntities} TAKE {pagesize}").ToList();
+                var kidsOnList = context.Database.SqlQuery<Kid>($"SELECT * FROM dbo.{viewName} ORDER BY KidID").ToList();
                 return kidsOnList;
             }
         }

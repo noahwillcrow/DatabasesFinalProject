@@ -1,0 +1,22 @@
+﻿@model List<DatabaseBridge.Models.Kid>
+@{
+    ViewBag.Title = "Kids";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th> 
+        <th>Age</th>
+    </tr>
+    @foreach (var kid in Model)
+    {
+        <tr>
+            <td><a href="/kids/details/@kid.ID">@kid.Name</a></td>
+            <td>@kid.Gender</td>
+            <td>@kid.Age</td>
+        </tr>
+    }
+</table>
